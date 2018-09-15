@@ -1,0 +1,18 @@
+clone:
+  git:
+    image: plugins/git
+    depth: 50
+    tags: true
+pipeline:
+  build:
+    image: node:6.10.2-alpine
+    commands:
+      - yarn install
+      - yarn run build
+  # publish:
+  #   image: plugins/docker
+  #   repo: eisenxu/realtopper-app
+  #   secrets: [ docker_username, docker_password ]
+  #   tags:
+  #     - latest
+  #     - ${DRONE_COMMIT_SHA:0:8}
